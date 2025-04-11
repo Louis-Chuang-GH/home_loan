@@ -24,7 +24,7 @@ if g_period > 0:
     g = round(principal*apr/12)
     print("寬限期每月應償還利息:",g,"元")
     print("寬限期後，", end="")
-    g_interest = round(g_interest + g * g_period)
+    g_interest = g_interest + g * g_period
 
 while True:
     total = principal
@@ -33,7 +33,7 @@ while True:
     
     for i in range(freq-g_period):
         total_g = round(total_g + total*apr/12)
-        total = total - (avg - (total*apr/12))
+        total = total - (avg - round(total*apr/12))
     else:
         if total <= 0:
             print("每月應還款:", avg, "元")
@@ -42,7 +42,6 @@ while True:
             avg = avg + 1
 
 print("總利息為:",total_g,"元")
-
 
 """
 GPT 寫法
